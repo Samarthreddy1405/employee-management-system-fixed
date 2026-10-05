@@ -1,4 +1,0 @@
-databaseChangeLog:
-  # Creates the employees table with all columns, constraints, and indexes in one changeset.
-  - include:
-      file: db/changelog/employee-table.xml
