@@ -15,60 +15,60 @@
             <![CDATA[
             -- ── Designations (IT) ──────────────────────────────────────────
             INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
-                ('b0000001-0000-0000-0000-000000000001', 'Software Developer',  'a0000001-0000-0000-0000-000000000001', NOW(), NOW()),
-                ('b0000001-0000-0000-0000-000000000002', 'Senior Developer',    'a0000001-0000-0000-0000-000000000001', NOW(), NOW()),
-                ('b0000001-0000-0000-0000-000000000003', 'Frontend Developer',  'a0000001-0000-0000-0000-000000000001', NOW(), NOW()),
-                ('b0000001-0000-0000-0000-000000000004', 'Backend Developer',   'a0000001-0000-0000-0000-000000000001', NOW(), NOW()),
-                ('b0000001-0000-0000-0000-000000000005', 'Full Stack Developer','a0000001-0000-0000-0000-000000000001', NOW(), NOW());
+                ('660e8400-e29b-41d4-a716-446655440001', 'Software Developer',  '550e8400-e29b-41d4-a716-446655440001', NOW(), NOW()),
+                ('660e8400-e29b-41d4-a716-446655440002', 'Senior Developer',    '550e8400-e29b-41d4-a716-446655440001', NOW(), NOW()),
+                ('660e8400-e29b-41d4-a716-446655440003', 'Frontend Developer',  '550e8400-e29b-41d4-a716-446655440001', NOW(), NOW()),
+                ('660e8400-e29b-41d4-a716-446655440004', 'Backend Developer',   '550e8400-e29b-41d4-a716-446655440001', NOW(), NOW()),
+                ('660e8400-e29b-41d4-a716-446655440005', 'Full Stack Developer','550e8400-e29b-41d4-a716-446655440001', NOW(), NOW());
 
             -- ── Designations (Engineering) ─────────────────────────────────
             INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
-                ('b0000002-0000-0000-0000-000000000001', 'Software Engineer',   'a0000001-0000-0000-0000-000000000002', NOW(), NOW()),
-                ('b0000002-0000-0000-0000-000000000002', 'Senior Developer',    'a0000001-0000-0000-0000-000000000002', NOW(), NOW()),
-                ('b0000002-0000-0000-0000-000000000003', 'Frontend Developer',  'a0000001-0000-0000-0000-000000000002', NOW(), NOW()),
-                ('b0000002-0000-0000-0000-000000000004', 'Backend Developer',   'a0000001-0000-0000-0000-000000000002', NOW(), NOW()),
-                ('b0000002-0000-0000-0000-000000000005', 'Full Stack Developer','a0000001-0000-0000-0000-000000000002', NOW(), NOW());
+                ('660e8400-e29b-41d4-a716-446655440006', 'Software Engineer',   '550e8400-e29b-41d4-a716-446655440002', NOW(), NOW()),
+                ('660e8400-e29b-41d4-a716-446655440007', 'Senior Developer',    '550e8400-e29b-41d4-a716-446655440002', NOW(), NOW()),
+                ('660e8400-e29b-41d4-a716-446655440008', 'Frontend Developer',  '550e8400-e29b-41d4-a716-446655440002', NOW(), NOW()),
+                ('660e8400-e29b-41d4-a716-446655440009', 'Backend Developer',   '550e8400-e29b-41d4-a716-446655440002', NOW(), NOW()),
+                ('660e8400-e29b-41d4-a716-446655440010', 'Full Stack Developer','550e8400-e29b-41d4-a716-446655440002', NOW(), NOW());
 
             -- ── Designations (QA) ─────────────────────────────────────────
             INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
-                ('b0000003-0000-0000-0000-000000000001', 'QA Engineer',         'a0000001-0000-0000-0000-000000000003', NOW(), NOW()),
-                ('b0000003-0000-0000-0000-000000000002', 'Automation Tester',   'a0000001-0000-0000-0000-000000000003', NOW(), NOW());
+                ('660e8400-e29b-41d4-a716-446655440011', 'QA Engineer',         '550e8400-e29b-41d4-a716-446655440003', NOW(), NOW()),
+                ('660e8400-e29b-41d4-a716-446655440012', 'Automation Tester',   '550e8400-e29b-41d4-a716-446655440003', NOW(), NOW());
 
             -- ── Designations (HR) ─────────────────────────────────────────
             INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
-                ('b0000004-0000-0000-0000-000000000001', 'HR Executive',        'a0000001-0000-0000-0000-000000000004', NOW(), NOW()),
-                ('b0000004-0000-0000-0000-000000000002', 'HR Manager',          'a0000001-0000-0000-0000-000000000004', NOW(), NOW());
+                ('660e8400-e29b-41d4-a716-446655440013', 'HR Executive',        '550e8400-e29b-41d4-a716-446655440004', NOW(), NOW()),
+                ('660e8400-e29b-41d4-a716-446655440014', 'HR Manager',          '550e8400-e29b-41d4-a716-446655440004', NOW(), NOW());
 
             -- ── Designations (Finance) ────────────────────────────────────
             INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
-                ('b0000005-0000-0000-0000-000000000001', 'Accountant',          'a0000001-0000-0000-0000-000000000005', NOW(), NOW()),
-                ('b0000005-0000-0000-0000-000000000002', 'Financial Analyst',   'a0000001-0000-0000-0000-000000000005', NOW(), NOW());
+                ('660e8400-e29b-41d4-a716-446655440015', 'Accountant',          '550e8400-e29b-41d4-a716-446655440005', NOW(), NOW()),
+                ('660e8400-e29b-41d4-a716-446655440016', 'Financial Analyst',   '550e8400-e29b-41d4-a716-446655440005', NOW(), NOW());
 
             -- ── Designations (Sales) ──────────────────────────────────────
             INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
-                ('b0000006-0000-0000-0000-000000000001', 'Sales Executive',     'a0000001-0000-0000-0000-000000000006', NOW(), NOW());
+                ('660e8400-e29b-41d4-a716-446655440017', 'Sales Executive',     '550e8400-e29b-41d4-a716-446655440006', NOW(), NOW());
 
             -- ── Designations (Marketing) ──────────────────────────────────
             INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
-                ('b0000007-0000-0000-0000-000000000001', 'Marketing Executive', 'a0000001-0000-0000-0000-000000000007', NOW(), NOW());
+                ('660e8400-e29b-41d4-a716-446655440018', 'Marketing Executive', '550e8400-e29b-41d4-a716-446655440007', NOW(), NOW());
 
             -- ── Designations (Operations) ─────────────────────────────────
             INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
-                ('b0000008-0000-0000-0000-000000000001', 'Operations Executive','a0000001-0000-0000-0000-000000000008', NOW(), NOW());
+                ('660e8400-e29b-41d4-a716-446655440019', 'Operations Executive','550e8400-e29b-41d4-a716-446655440008', NOW(), NOW());
 
             -- ── Designations (Customer Support) ───────────────────────────
             INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
-                ('b0000009-0000-0000-0000-000000000001', 'Support Executive',   'a0000001-0000-0000-0000-000000000009', NOW(), NOW());
+                ('660e8400-e29b-41d4-a716-446655440020', 'Support Executive',   '550e8400-e29b-41d4-a716-446655440009', NOW(), NOW());
 
             -- ── Designations (Administration) ─────────────────────────────
             INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
-                ('b0000010-0000-0000-0000-000000000001', 'Admin Executive',     'a0000001-0000-0000-0000-000000000010', NOW(), NOW());
+                ('660e8400-e29b-41d4-a716-446655440021', 'Admin Executive',     '550e8400-e29b-41d4-a716-446655440010', NOW(), NOW());
             ]]>
         </sql>
         <rollback>
             <sql dbms="postgresql" splitStatements="true" stripComments="true">
                 <![CDATA[
-                DELETE FROM designations WHERE id LIKE 'b000000%-0000-0000-0000-0000000000%';
+                DELETE FROM designations WHERE id::text LIKE '660e8400-e29b-41d4-a716-4466554400%';
                 ]]>
             </sql>
         </rollback>

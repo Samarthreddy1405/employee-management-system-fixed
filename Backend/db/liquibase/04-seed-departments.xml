@@ -13,22 +13,22 @@
         <sql dbms="postgresql" splitStatements="true" stripComments="true">
             <![CDATA[
             INSERT INTO departments (id, name, created_on, updated_on) VALUES
-                ('a0000001-0000-0000-0000-000000000001', 'IT',               NOW(), NOW()),
-                ('a0000001-0000-0000-0000-000000000002', 'Engineering',      NOW(), NOW()),
-                ('a0000001-0000-0000-0000-000000000003', 'QA',               NOW(), NOW()),
-                ('a0000001-0000-0000-0000-000000000004', 'HR',               NOW(), NOW()),
-                ('a0000001-0000-0000-0000-000000000005', 'Finance',          NOW(), NOW()),
-                ('a0000001-0000-0000-0000-000000000006', 'Sales',            NOW(), NOW()),
-                ('a0000001-0000-0000-0000-000000000007', 'Marketing',        NOW(), NOW()),
-                ('a0000001-0000-0000-0000-000000000008', 'Operations',       NOW(), NOW()),
-                ('a0000001-0000-0000-0000-000000000009', 'Customer Support', NOW(), NOW()),
-                ('a0000001-0000-0000-0000-000000000010', 'Administration',   NOW(), NOW());
+                ('550e8400-e29b-41d4-a716-446655440001', 'IT',               NOW(), NOW()),
+                ('550e8400-e29b-41d4-a716-446655440002', 'Engineering',      NOW(), NOW()),
+                ('550e8400-e29b-41d4-a716-446655440003', 'QA',               NOW(), NOW()),
+                ('550e8400-e29b-41d4-a716-446655440004', 'HR',               NOW(), NOW()),
+                ('550e8400-e29b-41d4-a716-446655440005', 'Finance',          NOW(), NOW()),
+                ('550e8400-e29b-41d4-a716-446655440006', 'Sales',            NOW(), NOW()),
+                ('550e8400-e29b-41d4-a716-446655440007', 'Marketing',        NOW(), NOW()),
+                ('550e8400-e29b-41d4-a716-446655440008', 'Operations',       NOW(), NOW()),
+                ('550e8400-e29b-41d4-a716-446655440009', 'Customer Support', NOW(), NOW()),
+                ('550e8400-e29b-41d4-a716-446655440010', 'Administration',   NOW(), NOW());
             ]]>
         </sql>
         <rollback>
             <sql dbms="postgresql" splitStatements="true" stripComments="true">
                 <![CDATA[
-                DELETE FROM departments WHERE id LIKE 'a0000001-0000-0000-0000-0000000000%';
+                DELETE FROM departments WHERE id::text LIKE '550e8400-e29b-41d4-a716-4466554400%';
                 ]]>
             </sql>
         </rollback>
