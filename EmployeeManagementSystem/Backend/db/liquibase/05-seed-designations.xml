@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="seed-list-name-designation" author="system">
+        <!-- Create list name entry for designation -->
+        <insert tableName="list_names">
+            <column name="id" value="list-name-designation-001"/>
+            <column name="name" value="designation"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="seed-list-values-designations" author="system">
+        <!-- Seed designation values linked to list_names -->
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440001"/>
+            <column name="value" value="Software Developer"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440002"/>
+            <column name="value" value="Senior Developer"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440003"/>
+            <column name="value" value="Frontend Developer"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440004"/>
+            <column name="value" value="Backend Developer"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440005"/>
+            <column name="value" value="Full Stack Developer"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440006"/>
+            <column name="value" value="Software Engineer"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440007"/>
+            <column name="value" value="Senior Developer"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440008"/>
+            <column name="value" value="Frontend Developer"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440009"/>
+            <column name="value" value="Backend Developer"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440010"/>
+            <column name="value" value="Full Stack Developer"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440011"/>
+            <column name="value" value="QA Engineer"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440012"/>
+            <column name="value" value="Automation Tester"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440013"/>
+            <column name="value" value="HR Executive"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440014"/>
+            <column name="value" value="HR Manager"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440015"/>
+            <column name="value" value="Accountant"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440016"/>
+            <column name="value" value="Financial Analyst"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440017"/>
+            <column name="value" value="Sales Executive"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440018"/>
+            <column name="value" value="Marketing Executive"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440019"/>
+            <column name="value" value="Operations Executive"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440020"/>
+            <column name="value" value="Support Executive"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440021"/>
+            <column name="value" value="Admin Executive"/>
+            <column name="list_name_id" value="list-name-designation-001"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
