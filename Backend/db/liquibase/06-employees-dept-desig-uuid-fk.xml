@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         Changeset 6 — Add department_id and designation_id UUID FK columns
+                       to employees, backfill by matching existing name text,
+                       then drop the old VARCHAR columns.
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <changeSet id="202410056000-employees-dept-desig-uuid-fk" author="system">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            <![CDATA[
+            -- Step A: add new nullable FK columns
+            ALTER TABLE employees
+                ADD COLUMN department_id  UUID NULL,
+                ADD COLUMN designation_id UUID NULL;
+
+            -- Step B: backfill department_id from name text
+            UPDATE employees e
+            SET department_id = d.id
+            FROM departments d
+            WHERE LOWER(TRIM(e.department)) = LOWER(TRIM(d.name));
+
+            -- Step C: backfill designation_id — must match both name AND the resolved department
+            UPDATE employees e
+            SET designation_id = des.id
+            FROM designations des
+            WHERE LOWER(TRIM(e.designation)) = LOWER(TRIM(des.name))
+              AND (
+                    e.department_id IS NULL                  -- no dept resolved; try name only
+                    OR des.department_id = e.department_id   -- dept matches exactly
+                  );
+
+            -- Step D: add FK constraints (nullable — existing rows may not resolve)
+            ALTER TABLE employees
+                ADD CONSTRAINT fk_employees_department   FOREIGN KEY (department_id)  REFERENCES departments(id),
+                ADD CONSTRAINT fk_employees_designation  FOREIGN KEY (designation_id) REFERENCES designations(id);
+
+            -- Step E: indexes for FK lookups
+            CREATE INDEX idx_employees_department_id  ON employees (department_id);
+            CREATE INDEX idx_employees_designation_id ON employees (designation_id);
+
+            -- Step F: drop old VARCHAR columns
+            ALTER TABLE employees
+                DROP COLUMN department,
+                DROP COLUMN designation;
+            ]]>
+        </sql>
+        <rollback>
+            <sql dbms="postgresql" splitStatements="true" stripComments="true">
+                <![CDATA[
+                -- Restore old columns (data is lost on rollback — acceptable for dev)
+                ALTER TABLE employees
+                    ADD COLUMN department  VARCHAR(100) NULL,
+                    ADD COLUMN designation VARCHAR(100) NULL;
+
+                -- Backfill names from FK tables
+                UPDATE employees e
+                SET department  = d.name
+                FROM departments d
+                WHERE e.department_id = d.id;
+
+                UPDATE employees e
+                SET designation = des.name
+                FROM designations des
+                WHERE e.designation_id = des.id;
+
+                -- Drop FK constraints and new columns
+                ALTER TABLE employees
+                    DROP CONSTRAINT IF EXISTS fk_employees_department,
+                    DROP CONSTRAINT IF EXISTS fk_employees_designation,
+                    DROP COLUMN IF EXISTS department_id,
+                    DROP COLUMN IF EXISTS designation_id;
+
+                DROP INDEX IF EXISTS idx_employees_department_id;
+                DROP INDEX IF EXISTS idx_employees_designation_id;
+                ]]>
+            </sql>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

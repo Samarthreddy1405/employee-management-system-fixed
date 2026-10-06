@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         Changeset 4 — Seed departments
+         UUIDs are stable (hardcoded) so they can be referenced in other changesets
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <changeSet id="202410054000-seed-departments" author="system">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            <![CDATA[
+            INSERT INTO departments (id, name, created_on, updated_on) VALUES
+                ('a0000001-0000-0000-0000-000000000001', 'IT',               NOW(), NOW()),
+                ('a0000001-0000-0000-0000-000000000002', 'Engineering',      NOW(), NOW()),
+                ('a0000001-0000-0000-0000-000000000003', 'QA',               NOW(), NOW()),
+                ('a0000001-0000-0000-0000-000000000004', 'HR',               NOW(), NOW()),
+                ('a0000001-0000-0000-0000-000000000005', 'Finance',          NOW(), NOW()),
+                ('a0000001-0000-0000-0000-000000000006', 'Sales',            NOW(), NOW()),
+                ('a0000001-0000-0000-0000-000000000007', 'Marketing',        NOW(), NOW()),
+                ('a0000001-0000-0000-0000-000000000008', 'Operations',       NOW(), NOW()),
+                ('a0000001-0000-0000-0000-000000000009', 'Customer Support', NOW(), NOW()),
+                ('a0000001-0000-0000-0000-000000000010', 'Administration',   NOW(), NOW());
+            ]]>
+        </sql>
+        <rollback>
+            <sql dbms="postgresql" splitStatements="true" stripComments="true">
+                <![CDATA[
+                DELETE FROM departments WHERE id LIKE 'a0000001-0000-0000-0000-0000000000%';
+                ]]>
+            </sql>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

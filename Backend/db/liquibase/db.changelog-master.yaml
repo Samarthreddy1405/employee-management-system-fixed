@@ -1,4 +1,18 @@
 databaseChangeLog:
-  # Creates the employees table with all columns, constraints, and indexes in one changeset.
+  # Create tables
   - include:
-      file: db/changelog/employee-table.xml
+      file: db/changelog/01-create-employees-table.xml
+  - include:
+      file: db/changelog/02-create-departments-table.xml
+  - include:
+      file: db/changelog/03-create-designations-table.xml
+  
+  # Seed reference data
+  - include:
+      file: db/changelog/04-seed-departments.xml
+  - include:
+      file: db/changelog/05-seed-designations.xml
+  
+  # Migrate employees to use UUID foreign keys
+  - include:
+      file: db/changelog/06-employees-dept-desig-uuid-fk.xml

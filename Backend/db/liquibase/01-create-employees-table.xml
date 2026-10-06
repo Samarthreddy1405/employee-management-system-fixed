@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         Changeset 1 — Create employees table (original, never edit)
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <changeSet id="202410051000-create-employees-table" author="system">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            <![CDATA[
+            CREATE TABLE employees (
+                id              UUID            NOT NULL,
+                org_id          UUID            NOT NULL,
+                name            VARCHAR(150)    NOT NULL,
+                email           VARCHAR(255)    NOT NULL,
+                phone           VARCHAR(20)     NULL,
+                department      VARCHAR(100)    NULL,
+                designation     VARCHAR(100)    NULL,
+                metadata        JSONB           NULL,
+                created_on      TIMESTAMP(6)    NOT NULL,
+                updated_on      TIMESTAMP(6)    NOT NULL,
+                is_active       BOOLEAN         NOT NULL DEFAULT TRUE,
+                created_by      UUID            NULL,
+                updated_by      UUID            NULL,
+                CONSTRAINT employees_pkey        PRIMARY KEY (id),
+                CONSTRAINT uk_employees_email    UNIQUE      (email),
+                CONSTRAINT uk_employees_phone    UNIQUE      (phone)
+            );
+            CREATE INDEX idx_employees_org_id       ON employees (org_id);
+            CREATE INDEX idx_employees_metadata_gin ON employees USING GIN (metadata jsonb_path_ops);
+            ]]>
+        </sql>
+        <rollback>
+            <sql dbms="postgresql" splitStatements="true" stripComments="true">
+                <![CDATA[
+                DROP INDEX IF EXISTS idx_employees_metadata_gin;
+                DROP INDEX IF EXISTS idx_employees_org_id;
+                DROP TABLE IF EXISTS employees;
+                ]]>
+            </sql>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
