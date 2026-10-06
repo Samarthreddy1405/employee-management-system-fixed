@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="seed-list-name-department" author="system">
+        <!-- Create list name entry for department -->
+        <insert tableName="list_names">
+            <column name="id" value="list-name-department-001"/>
+            <column name="name" value="department"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="seed-list-values-departments" author="system">
+        <!-- Seed department values linked to list_names -->
+        <insert tableName="list_values">
+            <column name="id" value="550e8400-e29b-41d4-a716-446655440001"/>
+            <column name="value" value="IT"/>
+            <column name="list_name_id" value="list-name-department-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="550e8400-e29b-41d4-a716-446655440002"/>
+            <column name="value" value="Engineering"/>
+            <column name="list_name_id" value="list-name-department-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="550e8400-e29b-41d4-a716-446655440003"/>
+            <column name="value" value="QA"/>
+            <column name="list_name_id" value="list-name-department-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="550e8400-e29b-41d4-a716-446655440004"/>
+            <column name="value" value="HR"/>
+            <column name="list_name_id" value="list-name-department-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="550e8400-e29b-41d4-a716-446655440005"/>
+            <column name="value" value="Finance"/>
+            <column name="list_name_id" value="list-name-department-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="550e8400-e29b-41d4-a716-446655440006"/>
+            <column name="value" value="Sales"/>
+            <column name="list_name_id" value="list-name-department-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="550e8400-e29b-41d4-a716-446655440007"/>
+            <column name="value" value="Marketing"/>
+            <column name="list_name_id" value="list-name-department-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="550e8400-e29b-41d4-a716-446655440008"/>
+            <column name="value" value="Operations"/>
+            <column name="list_name_id" value="list-name-department-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="550e8400-e29b-41d4-a716-446655440009"/>
+            <column name="value" value="Customer Support"/>
+            <column name="list_name_id" value="list-name-department-001"/>
+        </insert>
+        <insert tableName="list_values">
+            <column name="id" value="550e8400-e29b-41d4-a716-446655440010"/>
+            <column name="value" value="Administration"/>
+            <column name="list_name_id" value="list-name-department-001"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
