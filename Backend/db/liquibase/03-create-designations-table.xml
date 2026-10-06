@@ -1,10 +1,14 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
-
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         Changeset 3 — Create designations table
+         department_id : FK → departments(id)
+         UNIQUE on (department_id, name) — same title can exist in different depts
+         ═══════════════════════════════════════════════════════════════════════ -->
     <changeSet id="202410053000-create-designations-table" author="system">
         <createTable tableName="designations">
             <column name="id" type="UUID">
@@ -23,7 +27,6 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <addUniqueConstraint tableName="designations" columnNames="department_id, name" constraintName="designations_dept_name_uq"/>
+        <addUniqueConstraint tableName="designations" columnNames="department_id, name" constraintName="uk_designations_dept_name"/>
     </changeSet>
-
 </databaseChangeLog>

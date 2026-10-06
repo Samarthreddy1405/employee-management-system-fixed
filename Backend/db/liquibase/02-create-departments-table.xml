@@ -1,10 +1,12 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
-
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         Changeset 2 — Create departments table
+         ═══════════════════════════════════════════════════════════════════════ -->
     <changeSet id="202410052000-create-departments-table" author="system">
         <createTable tableName="departments">
             <column name="id" type="UUID">
@@ -21,5 +23,4 @@
             </column>
         </createTable>
     </changeSet>
-
 </databaseChangeLog>
