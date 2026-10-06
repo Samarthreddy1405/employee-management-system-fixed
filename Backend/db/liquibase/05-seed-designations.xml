@@ -8,69 +8,179 @@
     <!-- ═══════════════════════════════════════════════════════════════════════
          Changeset 5 — Seed designations
          Source: frontend/src/constants/appData.js DEPT_DESIG_MAP
-         UUIDs are stable (hardcoded) so backfill in changeset 6 can reference them
          ═══════════════════════════════════════════════════════════════════════ -->
     <changeSet id="202410055000-seed-designations" author="system">
-        <sql dbms="postgresql" splitStatements="true" stripComments="true">
-            <![CDATA[
-            -- ── Designations (IT) ──────────────────────────────────────────
-            INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
-                ('660e8400-e29b-41d4-a716-446655440001', 'Software Developer',  '550e8400-e29b-41d4-a716-446655440001', NOW(), NOW()),
-                ('660e8400-e29b-41d4-a716-446655440002', 'Senior Developer',    '550e8400-e29b-41d4-a716-446655440001', NOW(), NOW()),
-                ('660e8400-e29b-41d4-a716-446655440003', 'Frontend Developer',  '550e8400-e29b-41d4-a716-446655440001', NOW(), NOW()),
-                ('660e8400-e29b-41d4-a716-446655440004', 'Backend Developer',   '550e8400-e29b-41d4-a716-446655440001', NOW(), NOW()),
-                ('660e8400-e29b-41d4-a716-446655440005', 'Full Stack Developer','550e8400-e29b-41d4-a716-446655440001', NOW(), NOW());
+        <!-- IT Department Designations -->
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440001"/>
+            <column name="name" value="Software Developer"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440001"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440002"/>
+            <column name="name" value="Senior Developer"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440001"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440003"/>
+            <column name="name" value="Frontend Developer"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440001"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440004"/>
+            <column name="name" value="Backend Developer"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440001"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440005"/>
+            <column name="name" value="Full Stack Developer"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440001"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
 
-            -- ── Designations (Engineering) ─────────────────────────────────
-            INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
-                ('660e8400-e29b-41d4-a716-446655440006', 'Software Engineer',   '550e8400-e29b-41d4-a716-446655440002', NOW(), NOW()),
-                ('660e8400-e29b-41d4-a716-446655440007', 'Senior Developer',    '550e8400-e29b-41d4-a716-446655440002', NOW(), NOW()),
-                ('660e8400-e29b-41d4-a716-446655440008', 'Frontend Developer',  '550e8400-e29b-41d4-a716-446655440002', NOW(), NOW()),
-                ('660e8400-e29b-41d4-a716-446655440009', 'Backend Developer',   '550e8400-e29b-41d4-a716-446655440002', NOW(), NOW()),
-                ('660e8400-e29b-41d4-a716-446655440010', 'Full Stack Developer','550e8400-e29b-41d4-a716-446655440002', NOW(), NOW());
+        <!-- Engineering Department Designations -->
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440006"/>
+            <column name="name" value="Software Engineer"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440002"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440007"/>
+            <column name="name" value="Senior Developer"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440002"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440008"/>
+            <column name="name" value="Frontend Developer"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440002"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440009"/>
+            <column name="name" value="Backend Developer"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440002"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440010"/>
+            <column name="name" value="Full Stack Developer"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440002"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
 
-            -- ── Designations (QA) ─────────────────────────────────────────
-            INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
-                ('660e8400-e29b-41d4-a716-446655440011', 'QA Engineer',         '550e8400-e29b-41d4-a716-446655440003', NOW(), NOW()),
-                ('660e8400-e29b-41d4-a716-446655440012', 'Automation Tester',   '550e8400-e29b-41d4-a716-446655440003', NOW(), NOW());
+        <!-- QA Department Designations -->
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440011"/>
+            <column name="name" value="QA Engineer"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440003"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440012"/>
+            <column name="name" value="Automation Tester"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440003"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
 
-            -- ── Designations (HR) ─────────────────────────────────────────
-            INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
-                ('660e8400-e29b-41d4-a716-446655440013', 'HR Executive',        '550e8400-e29b-41d4-a716-446655440004', NOW(), NOW()),
-                ('660e8400-e29b-41d4-a716-446655440014', 'HR Manager',          '550e8400-e29b-41d4-a716-446655440004', NOW(), NOW());
+        <!-- HR Department Designations -->
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440013"/>
+            <column name="name" value="HR Executive"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440004"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440014"/>
+            <column name="name" value="HR Manager"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440004"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
 
-            -- ── Designations (Finance) ────────────────────────────────────
-            INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
-                ('660e8400-e29b-41d4-a716-446655440015', 'Accountant',          '550e8400-e29b-41d4-a716-446655440005', NOW(), NOW()),
-                ('660e8400-e29b-41d4-a716-446655440016', 'Financial Analyst',   '550e8400-e29b-41d4-a716-446655440005', NOW(), NOW());
+        <!-- Finance Department Designations -->
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440015"/>
+            <column name="name" value="Accountant"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440005"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440016"/>
+            <column name="name" value="Financial Analyst"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440005"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
 
-            -- ── Designations (Sales) ──────────────────────────────────────
-            INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
-                ('660e8400-e29b-41d4-a716-446655440017', 'Sales Executive',     '550e8400-e29b-41d4-a716-446655440006', NOW(), NOW());
+        <!-- Sales Department Designations -->
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440017"/>
+            <column name="name" value="Sales Executive"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440006"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
 
-            -- ── Designations (Marketing) ──────────────────────────────────
-            INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
-                ('660e8400-e29b-41d4-a716-446655440018', 'Marketing Executive', '550e8400-e29b-41d4-a716-446655440007', NOW(), NOW());
+        <!-- Marketing Department Designations -->
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440018"/>
+            <column name="name" value="Marketing Executive"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440007"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
 
-            -- ── Designations (Operations) ─────────────────────────────────
-            INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
-                ('660e8400-e29b-41d4-a716-446655440019', 'Operations Executive','550e8400-e29b-41d4-a716-446655440008', NOW(), NOW());
+        <!-- Operations Department Designations -->
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440019"/>
+            <column name="name" value="Operations Executive"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440008"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
 
-            -- ── Designations (Customer Support) ───────────────────────────
-            INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
-                ('660e8400-e29b-41d4-a716-446655440020', 'Support Executive',   '550e8400-e29b-41d4-a716-446655440009', NOW(), NOW());
+        <!-- Customer Support Department Designations -->
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440020"/>
+            <column name="name" value="Support Executive"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440009"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
 
-            -- ── Designations (Administration) ─────────────────────────────
-            INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
-                ('660e8400-e29b-41d4-a716-446655440021', 'Admin Executive',     '550e8400-e29b-41d4-a716-446655440010', NOW(), NOW());
-            ]]>
-        </sql>
+        <!-- Administration Department Designations -->
+        <insert tableName="designations">
+            <column name="id" value="660e8400-e29b-41d4-a716-446655440021"/>
+            <column name="name" value="Admin Executive"/>
+            <column name="department_id" value="550e8400-e29b-41d4-a716-446655440010"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
         <rollback>
-            <sql dbms="postgresql" splitStatements="true" stripComments="true">
-                <![CDATA[
-                DELETE FROM designations WHERE id::text LIKE '660e8400-e29b-41d4-a716-4466554400%';
-                ]]>
-            </sql>
+            <delete tableName="designations">
+                <where>id IN ('660e8400-e29b-41d4-a716-446655440001', '660e8400-e29b-41d4-a716-446655440002', '660e8400-e29b-41d4-a716-446655440003', '660e8400-e29b-41d4-a716-446655440004', '660e8400-e29b-41d4-a716-446655440005', '660e8400-e29b-41d4-a716-446655440006', '660e8400-e29b-41d4-a716-446655440007', '660e8400-e29b-41d4-a716-446655440008', '660e8400-e29b-41d4-a716-446655440009', '660e8400-e29b-41d4-a716-446655440010', '660e8400-e29b-41d4-a716-446655440011', '660e8400-e29b-41d4-a716-446655440012', '660e8400-e29b-41d4-a716-446655440013', '660e8400-e29b-41d4-a716-446655440014', '660e8400-e29b-41d4-a716-446655440015', '660e8400-e29b-41d4-a716-446655440016', '660e8400-e29b-41d4-a716-446655440017', '660e8400-e29b-41d4-a716-446655440018', '660e8400-e29b-41d4-a716-446655440019', '660e8400-e29b-41d4-a716-446655440020', '660e8400-e29b-41d4-a716-446655440021')</where>
+            </delete>
         </rollback>
     </changeSet>
 

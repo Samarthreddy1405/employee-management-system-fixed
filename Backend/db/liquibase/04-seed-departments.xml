@@ -10,27 +10,70 @@
          UUIDs are stable (hardcoded) so they can be referenced in other changesets
          ═══════════════════════════════════════════════════════════════════════ -->
     <changeSet id="202410054000-seed-departments" author="system">
-        <sql dbms="postgresql" splitStatements="true" stripComments="true">
-            <![CDATA[
-            INSERT INTO departments (id, name, created_on, updated_on) VALUES
-                ('550e8400-e29b-41d4-a716-446655440001', 'IT',               NOW(), NOW()),
-                ('550e8400-e29b-41d4-a716-446655440002', 'Engineering',      NOW(), NOW()),
-                ('550e8400-e29b-41d4-a716-446655440003', 'QA',               NOW(), NOW()),
-                ('550e8400-e29b-41d4-a716-446655440004', 'HR',               NOW(), NOW()),
-                ('550e8400-e29b-41d4-a716-446655440005', 'Finance',          NOW(), NOW()),
-                ('550e8400-e29b-41d4-a716-446655440006', 'Sales',            NOW(), NOW()),
-                ('550e8400-e29b-41d4-a716-446655440007', 'Marketing',        NOW(), NOW()),
-                ('550e8400-e29b-41d4-a716-446655440008', 'Operations',       NOW(), NOW()),
-                ('550e8400-e29b-41d4-a716-446655440009', 'Customer Support', NOW(), NOW()),
-                ('550e8400-e29b-41d4-a716-446655440010', 'Administration',   NOW(), NOW());
-            ]]>
-        </sql>
+        <insert tableName="departments">
+            <column name="id" value="550e8400-e29b-41d4-a716-446655440001"/>
+            <column name="name" value="IT"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="departments">
+            <column name="id" value="550e8400-e29b-41d4-a716-446655440002"/>
+            <column name="name" value="Engineering"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="departments">
+            <column name="id" value="550e8400-e29b-41d4-a716-446655440003"/>
+            <column name="name" value="QA"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="departments">
+            <column name="id" value="550e8400-e29b-41d4-a716-446655440004"/>
+            <column name="name" value="HR"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="departments">
+            <column name="id" value="550e8400-e29b-41d4-a716-446655440005"/>
+            <column name="name" value="Finance"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="departments">
+            <column name="id" value="550e8400-e29b-41d4-a716-446655440006"/>
+            <column name="name" value="Sales"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="departments">
+            <column name="id" value="550e8400-e29b-41d4-a716-446655440007"/>
+            <column name="name" value="Marketing"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="departments">
+            <column name="id" value="550e8400-e29b-41d4-a716-446655440008"/>
+            <column name="name" value="Operations"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="departments">
+            <column name="id" value="550e8400-e29b-41d4-a716-446655440009"/>
+            <column name="name" value="Customer Support"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="departments">
+            <column name="id" value="550e8400-e29b-41d4-a716-446655440010"/>
+            <column name="name" value="Administration"/>
+            <column name="created_on" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="updated_on" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
         <rollback>
-            <sql dbms="postgresql" splitStatements="true" stripComments="true">
-                <![CDATA[
-                DELETE FROM departments WHERE id::text LIKE '550e8400-e29b-41d4-a716-4466554400%';
-                ]]>
-            </sql>
+            <delete tableName="departments">
+                <where>id IN ('550e8400-e29b-41d4-a716-446655440001', '550e8400-e29b-41d4-a716-446655440002', '550e8400-e29b-41d4-a716-446655440003', '550e8400-e29b-41d4-a716-446655440004', '550e8400-e29b-41d4-a716-446655440005', '550e8400-e29b-41d4-a716-446655440006', '550e8400-e29b-41d4-a716-446655440007', '550e8400-e29b-41d4-a716-446655440008', '550e8400-e29b-41d4-a716-446655440009', '550e8400-e29b-41d4-a716-446655440010')</where>
+            </delete>
         </rollback>
     </changeSet>
 
