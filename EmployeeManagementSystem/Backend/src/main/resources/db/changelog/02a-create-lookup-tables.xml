@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         Changeset 2a — Create lookup tables (list_names and list_values)
+         Generic lookup table pattern for flexible reference data management
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <changeSet id="202410052500-create-lookup-tables" author="system">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            <![CDATA[
+            -- List Names table: holds categories of lookup lists
+            CREATE TABLE list_names (
+                id          VARCHAR(100)    NOT NULL,
+                name        VARCHAR(100)    NOT NULL,
+                created_on  TIMESTAMP(6)    NOT NULL DEFAULT NOW(),
+                updated_on  TIMESTAMP(6)    NOT NULL DEFAULT NOW(),
+                CONSTRAINT list_names_pkey    PRIMARY KEY (id),
+                CONSTRAINT uk_list_names_name UNIQUE      (name)
+            );
+
+            -- List Values table: holds actual lookup values linked to list names
+            CREATE TABLE list_values (
+                id              UUID            NOT NULL DEFAULT gen_random_uuid(),
+                value           VARCHAR(255)    NOT NULL,
+                list_name_id    VARCHAR(100)    NOT NULL,
+                created_on      TIMESTAMP(6)    NOT NULL DEFAULT NOW(),
+                updated_on      TIMESTAMP(6)    NOT NULL DEFAULT NOW(),
+                CONSTRAINT list_values_pkey         PRIMARY KEY (id),
+                CONSTRAINT fk_list_values_list_name FOREIGN KEY (list_name_id)
+                                                    REFERENCES list_names(id)
+            );
+            CREATE INDEX idx_list_values_list_name_id ON list_values (list_name_id);
+            ]]>
+        </sql>
+        <rollback>
+            <sql dbms="postgresql" splitStatements="true" stripComments="true">
+                <![CDATA[
+                DROP INDEX IF EXISTS idx_list_values_list_name_id;
+                DROP TABLE IF EXISTS list_values;
+                DROP TABLE IF EXISTS list_names;
+                ]]>
+            </sql>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

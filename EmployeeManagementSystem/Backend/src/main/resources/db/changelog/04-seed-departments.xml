@@ -5,66 +5,39 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet id="seed-list-name-department" author="system">
-        <!-- Create list name entry for department -->
-        <insert tableName="list_names">
-            <column name="id" value="list-name-department-001"/>
-            <column name="name" value="department"/>
-        </insert>
-    </changeSet>
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         Changeset 4 — Seed departments (list name: department)
+         Using generic lookup tables: list_names and list_values
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <changeSet id="202410054000-seed-list-department" author="system">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            <![CDATA[
+            -- ── Create list name entry for department ──────────────────────
+            INSERT INTO list_names (id, name, created_on, updated_on) VALUES
+                ('list-name-department-001', 'department', NOW(), NOW());
 
-    <changeSet id="seed-list-values-departments" author="system">
-        <!-- Seed department values linked to list_names -->
-        <insert tableName="list_values">
-            <column name="id" value="550e8400-e29b-41d4-a716-446655440001"/>
-            <column name="value" value="IT"/>
-            <column name="list_name_id" value="list-name-department-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="550e8400-e29b-41d4-a716-446655440002"/>
-            <column name="value" value="Engineering"/>
-            <column name="list_name_id" value="list-name-department-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="550e8400-e29b-41d4-a716-446655440003"/>
-            <column name="value" value="QA"/>
-            <column name="list_name_id" value="list-name-department-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="550e8400-e29b-41d4-a716-446655440004"/>
-            <column name="value" value="HR"/>
-            <column name="list_name_id" value="list-name-department-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="550e8400-e29b-41d4-a716-446655440005"/>
-            <column name="value" value="Finance"/>
-            <column name="list_name_id" value="list-name-department-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="550e8400-e29b-41d4-a716-446655440006"/>
-            <column name="value" value="Sales"/>
-            <column name="list_name_id" value="list-name-department-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="550e8400-e29b-41d4-a716-446655440007"/>
-            <column name="value" value="Marketing"/>
-            <column name="list_name_id" value="list-name-department-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="550e8400-e29b-41d4-a716-446655440008"/>
-            <column name="value" value="Operations"/>
-            <column name="list_name_id" value="list-name-department-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="550e8400-e29b-41d4-a716-446655440009"/>
-            <column name="value" value="Customer Support"/>
-            <column name="list_name_id" value="list-name-department-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="550e8400-e29b-41d4-a716-446655440010"/>
-            <column name="value" value="Administration"/>
-            <column name="list_name_id" value="list-name-department-001"/>
-        </insert>
+            -- ── Seed department values linked to list_names ────────────────
+            INSERT INTO list_values (id, value, list_name_id, created_on, updated_on) VALUES
+                ('a0000001-0000-0000-0000-000000000001', 'IT',               'list-name-department-001', NOW(), NOW()),
+                ('a0000001-0000-0000-0000-000000000002', 'Engineering',      'list-name-department-001', NOW(), NOW()),
+                ('a0000001-0000-0000-0000-000000000003', 'QA',               'list-name-department-001', NOW(), NOW()),
+                ('a0000001-0000-0000-0000-000000000004', 'HR',               'list-name-department-001', NOW(), NOW()),
+                ('a0000001-0000-0000-0000-000000000005', 'Finance',          'list-name-department-001', NOW(), NOW()),
+                ('a0000001-0000-0000-0000-000000000006', 'Sales',            'list-name-department-001', NOW(), NOW()),
+                ('a0000001-0000-0000-0000-000000000007', 'Marketing',        'list-name-department-001', NOW(), NOW()),
+                ('a0000001-0000-0000-0000-000000000008', 'Operations',       'list-name-department-001', NOW(), NOW()),
+                ('a0000001-0000-0000-0000-000000000009', 'Customer Support', 'list-name-department-001', NOW(), NOW()),
+                ('a0000001-0000-0000-0000-000000000010', 'Administration',   'list-name-department-001', NOW(), NOW());
+            ]]>
+        </sql>
+        <rollback>
+            <sql dbms="postgresql" splitStatements="true" stripComments="true">
+                <![CDATA[
+                DELETE FROM list_values WHERE list_name_id = 'list-name-department-001';
+                DELETE FROM list_names WHERE id = 'list-name-department-001';
+                ]]>
+            </sql>
+        </rollback>
     </changeSet>
 
 </databaseChangeLog>

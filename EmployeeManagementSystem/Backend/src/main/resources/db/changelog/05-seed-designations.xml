@@ -5,121 +5,72 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet id="seed-list-name-designation" author="system">
-        <!-- Create list name entry for designation -->
-        <insert tableName="list_names">
-            <column name="id" value="list-name-designation-001"/>
-            <column name="name" value="designation"/>
-        </insert>
-    </changeSet>
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         Changeset 5 — Seed designations
+         UUIDs are stable (hardcoded) to match the departments seeded in changeset 4.
+         ═══════════════════════════════════════════════════════════════════════ -->
+    <changeSet id="202410055000-seed-designations" author="system">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            <![CDATA[
+            -- ── Designations (IT) ──────────────────────────────────────────
+            INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
+                ('b0000001-0000-0000-0000-000000000001', 'Software Developer',  'a0000001-0000-0000-0000-000000000001', NOW(), NOW()),
+                ('b0000001-0000-0000-0000-000000000002', 'Senior Developer',    'a0000001-0000-0000-0000-000000000001', NOW(), NOW()),
+                ('b0000001-0000-0000-0000-000000000003', 'Frontend Developer',  'a0000001-0000-0000-0000-000000000001', NOW(), NOW()),
+                ('b0000001-0000-0000-0000-000000000004', 'Backend Developer',   'a0000001-0000-0000-0000-000000000001', NOW(), NOW()),
+                ('b0000001-0000-0000-0000-000000000005', 'Full Stack Developer','a0000001-0000-0000-0000-000000000001', NOW(), NOW());
 
-    <changeSet id="seed-list-values-designations" author="system">
-        <!-- Seed designation values linked to list_names -->
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440001"/>
-            <column name="value" value="Software Developer"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440002"/>
-            <column name="value" value="Senior Developer"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440003"/>
-            <column name="value" value="Frontend Developer"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440004"/>
-            <column name="value" value="Backend Developer"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440005"/>
-            <column name="value" value="Full Stack Developer"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440006"/>
-            <column name="value" value="Software Engineer"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440007"/>
-            <column name="value" value="Senior Developer"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440008"/>
-            <column name="value" value="Frontend Developer"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440009"/>
-            <column name="value" value="Backend Developer"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440010"/>
-            <column name="value" value="Full Stack Developer"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440011"/>
-            <column name="value" value="QA Engineer"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440012"/>
-            <column name="value" value="Automation Tester"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440013"/>
-            <column name="value" value="HR Executive"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440014"/>
-            <column name="value" value="HR Manager"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440015"/>
-            <column name="value" value="Accountant"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440016"/>
-            <column name="value" value="Financial Analyst"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440017"/>
-            <column name="value" value="Sales Executive"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440018"/>
-            <column name="value" value="Marketing Executive"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440019"/>
-            <column name="value" value="Operations Executive"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440020"/>
-            <column name="value" value="Support Executive"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
-        <insert tableName="list_values">
-            <column name="id" value="660e8400-e29b-41d4-a716-446655440021"/>
-            <column name="value" value="Admin Executive"/>
-            <column name="list_name_id" value="list-name-designation-001"/>
-        </insert>
+            -- ── Designations (Engineering) ─────────────────────────────────
+            INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
+                ('b0000002-0000-0000-0000-000000000001', 'Software Engineer',   'a0000001-0000-0000-0000-000000000002', NOW(), NOW()),
+                ('b0000002-0000-0000-0000-000000000002', 'Senior Developer',    'a0000001-0000-0000-0000-000000000002', NOW(), NOW()),
+                ('b0000002-0000-0000-0000-000000000003', 'Frontend Developer',  'a0000001-0000-0000-0000-000000000002', NOW(), NOW()),
+                ('b0000002-0000-0000-0000-000000000004', 'Backend Developer',   'a0000001-0000-0000-0000-000000000002', NOW(), NOW()),
+                ('b0000002-0000-0000-0000-000000000005', 'Full Stack Developer','a0000001-0000-0000-0000-000000000002', NOW(), NOW());
+
+            -- ── Designations (QA) ─────────────────────────────────────────
+            INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
+                ('b0000003-0000-0000-0000-000000000001', 'QA Engineer',         'a0000001-0000-0000-0000-000000000003', NOW(), NOW()),
+                ('b0000003-0000-0000-0000-000000000002', 'Automation Tester',   'a0000001-0000-0000-0000-000000000003', NOW(), NOW());
+
+            -- ── Designations (HR) ─────────────────────────────────────────
+            INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
+                ('b0000004-0000-0000-0000-000000000001', 'HR Executive',        'a0000001-0000-0000-0000-000000000004', NOW(), NOW()),
+                ('b0000004-0000-0000-0000-000000000002', 'HR Manager',          'a0000001-0000-0000-0000-000000000004', NOW(), NOW());
+
+            -- ── Designations (Finance) ────────────────────────────────────
+            INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
+                ('b0000005-0000-0000-0000-000000000001', 'Accountant',          'a0000001-0000-0000-0000-000000000005', NOW(), NOW()),
+                ('b0000005-0000-0000-0000-000000000002', 'Financial Analyst',   'a0000001-0000-0000-0000-000000000005', NOW(), NOW());
+
+            -- ── Designations (Sales) ──────────────────────────────────────
+            INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
+                ('b0000006-0000-0000-0000-000000000001', 'Sales Executive',     'a0000001-0000-0000-0000-000000000006', NOW(), NOW());
+
+            -- ── Designations (Marketing) ──────────────────────────────────
+            INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
+                ('b0000007-0000-0000-0000-000000000001', 'Marketing Executive', 'a0000001-0000-0000-0000-000000000007', NOW(), NOW());
+
+            -- ── Designations (Operations) ─────────────────────────────────
+            INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
+                ('b0000008-0000-0000-0000-000000000001', 'Operations Executive','a0000001-0000-0000-0000-000000000008', NOW(), NOW());
+
+            -- ── Designations (Customer Support) ───────────────────────────
+            INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
+                ('b0000009-0000-0000-0000-000000000001', 'Support Executive',   'a0000001-0000-0000-0000-000000000009', NOW(), NOW());
+
+            -- ── Designations (Administration) ─────────────────────────────
+            INSERT INTO designations (id, name, department_id, created_on, updated_on) VALUES
+                ('b0000010-0000-0000-0000-000000000001', 'Admin Executive',     'a0000001-0000-0000-0000-000000000010', NOW(), NOW());
+            ]]>
+        </sql>
+        <rollback>
+            <sql dbms="postgresql" splitStatements="true" stripComments="true">
+                <![CDATA[
+                DELETE FROM designations WHERE id LIKE 'b000000%-0000-0000-0000-0000000000%';
+                ]]>
+            </sql>
+        </rollback>
     </changeSet>
 
 </databaseChangeLog>

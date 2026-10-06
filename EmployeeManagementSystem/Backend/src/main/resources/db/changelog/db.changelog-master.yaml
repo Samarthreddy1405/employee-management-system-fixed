@@ -1,0 +1,18 @@
+databaseChangeLog:
+  # Create lookup tables for generic list management
+  - include:
+      file: db/changelog/02a-create-lookup-tables.xml
+  
+  # Create tables (departments and designations first, then employees with UUID foreign keys)
+  - include:
+      file: db/changelog/02-create-departments-table.xml
+  - include:
+      file: db/changelog/03-create-designations-table.xml
+  - include:
+      file: db/changelog/01-create-employees-table.xml
+  
+  # Seed reference data into lookup tables
+  - include:
+      file: db/changelog/04-seed-departments.xml
+  - include:
+      file: db/changelog/05-seed-designations.xml
