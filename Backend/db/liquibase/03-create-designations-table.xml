@@ -11,30 +11,27 @@
          UNIQUE on (department_id, name) — same title can exist in different depts
          ═══════════════════════════════════════════════════════════════════════ -->
     <changeSet id="202410053000-create-designations-table" author="system">
-        <sql dbms="postgresql" splitStatements="true" stripComments="true">
-            <![CDATA[
-            CREATE TABLE designations (
-                id              UUID            NOT NULL DEFAULT gen_random_uuid(),
-                name            VARCHAR(100)    NOT NULL,
-                department_id   UUID            NOT NULL,
-                created_on      TIMESTAMP(6)    NOT NULL DEFAULT NOW(),
-                updated_on      TIMESTAMP(6)    NOT NULL DEFAULT NOW(),
-                CONSTRAINT designations_pkey            PRIMARY KEY (id),
-                CONSTRAINT designations_dept_name_uq    UNIQUE      (department_id, name),
-                CONSTRAINT fk_designations_department   FOREIGN KEY (department_id)
-                                                        REFERENCES departments(id)
-            );
-            CREATE INDEX idx_designations_department_id ON designations (department_id);
-            ]]>
-        </sql>
-        <rollback>
-            <sql dbms="postgresql" splitStatements="true" stripComments="true">
-                <![CDATA[
-                DROP INDEX IF EXISTS idx_designations_department_id;
-                DROP TABLE IF EXISTS designations;
-                ]]>
-            </sql>
-        </rollback>
+        <createTable tableName="designations">
+            <column name="id" type="UUID" defaultValueComputed="gen_random_uuid()">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="designations_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="department_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_designations_department" references="departments(id)"/>
+            </column>
+            <column name="created_on" type="TIMESTAMP(6)" defaultValueComputed="NOW()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_on" type="TIMESTAMP(6)" defaultValueComputed="NOW()">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addUniqueConstraint tableName="designations" columnNames="department_id, name" constraintName="designations_dept_name_uq"/>
+        <createIndex tableName="designations" indexName="idx_designations_department_id">
+            <column name="department_id"/>
+        </createIndex>
     </changeSet>
 
 </databaseChangeLog>

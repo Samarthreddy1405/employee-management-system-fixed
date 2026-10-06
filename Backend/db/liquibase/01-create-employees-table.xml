@@ -9,45 +9,59 @@
          Changeset 1 — Create employees table with UUID foreign keys
          ═══════════════════════════════════════════════════════════════════════ -->
     <changeSet id="202410051000-create-employees-table" author="system">
-        <sql dbms="postgresql" splitStatements="true" stripComments="true">
-            <![CDATA[
-            CREATE TABLE employees (
-                id              UUID            NOT NULL,
-                org_id          UUID            NOT NULL,
-                name            VARCHAR(150)    NOT NULL,
-                email           VARCHAR(255)    NOT NULL,
-                phone           VARCHAR(20)     NULL,
-                department_id   UUID            NULL,
-                designation_id  UUID            NULL,
-                metadata        JSONB           NULL,
-                created_on      TIMESTAMP(6)    NOT NULL,
-                updated_on      TIMESTAMP(6)    NOT NULL,
-                is_active       BOOLEAN         NOT NULL DEFAULT TRUE,
-                created_by      UUID            NULL,
-                updated_by      UUID            NULL,
-                CONSTRAINT employees_pkey        PRIMARY KEY (id),
-                CONSTRAINT uk_employees_email    UNIQUE      (email),
-                CONSTRAINT uk_employees_phone    UNIQUE      (phone),
-                CONSTRAINT fk_employees_department   FOREIGN KEY (department_id)  REFERENCES departments(id),
-                CONSTRAINT fk_employees_designation  FOREIGN KEY (designation_id) REFERENCES designations(id)
-            );
-            CREATE INDEX idx_employees_org_id       ON employees (org_id);
-            CREATE INDEX idx_employees_department_id  ON employees (department_id);
-            CREATE INDEX idx_employees_designation_id ON employees (designation_id);
+        <createTable tableName="employees">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="employees_pkey"/>
+            </column>
+            <column name="org_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(150)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="uk_employees_email"/>
+            </column>
+            <column name="phone" type="VARCHAR(20)">
+                <constraints nullable="true" unique="true" uniqueConstraintName="uk_employees_phone"/>
+            </column>
+            <column name="department_id" type="UUID">
+                <constraints nullable="true" foreignKeyName="fk_employees_department" references="departments(id)"/>
+            </column>
+            <column name="designation_id" type="UUID">
+                <constraints nullable="true" foreignKeyName="fk_employees_designation" references="designations(id)"/>
+            </column>
+            <column name="metadata" type="JSONB">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="TIMESTAMP(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_on" type="TIMESTAMP(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_active" type="BOOLEAN" defaultValueBoolean="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="UUID">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated_by" type="UUID">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+        <createIndex tableName="employees" indexName="idx_employees_org_id">
+            <column name="org_id"/>
+        </createIndex>
+        <createIndex tableName="employees" indexName="idx_employees_department_id">
+            <column name="department_id"/>
+        </createIndex>
+        <createIndex tableName="employees" indexName="idx_employees_designation_id">
+            <column name="designation_id"/>
+        </createIndex>
+        <sql dbms="postgresql">
             CREATE INDEX idx_employees_metadata_gin ON employees USING GIN (metadata jsonb_path_ops);
-            ]]>
         </sql>
-        <rollback>
-            <sql dbms="postgresql" splitStatements="true" stripComments="true">
-                <![CDATA[
-                DROP INDEX IF EXISTS idx_employees_metadata_gin;
-                DROP INDEX IF EXISTS idx_employees_designation_id;
-                DROP INDEX IF EXISTS idx_employees_department_id;
-                DROP INDEX IF EXISTS idx_employees_org_id;
-                DROP TABLE IF EXISTS employees;
-                ]]>
-            </sql>
-        </rollback>
     </changeSet>
 
 </databaseChangeLog>
