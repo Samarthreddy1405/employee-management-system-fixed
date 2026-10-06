@@ -6,7 +6,7 @@
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <!-- ═══════════════════════════════════════════════════════════════════════
-         Changeset 1 — Create employees table (original, never edit)
+         Changeset 1 — Create employees table with UUID foreign keys
          ═══════════════════════════════════════════════════════════════════════ -->
     <changeSet id="202410051000-create-employees-table" author="system">
         <sql dbms="postgresql" splitStatements="true" stripComments="true">
@@ -17,8 +17,8 @@
                 name            VARCHAR(150)    NOT NULL,
                 email           VARCHAR(255)    NOT NULL,
                 phone           VARCHAR(20)     NULL,
-                department      VARCHAR(100)    NULL,
-                designation     VARCHAR(100)    NULL,
+                department_id   UUID            NULL,
+                designation_id  UUID            NULL,
                 metadata        JSONB           NULL,
                 created_on      TIMESTAMP(6)    NOT NULL,
                 updated_on      TIMESTAMP(6)    NOT NULL,
@@ -27,9 +27,13 @@
                 updated_by      UUID            NULL,
                 CONSTRAINT employees_pkey        PRIMARY KEY (id),
                 CONSTRAINT uk_employees_email    UNIQUE      (email),
-                CONSTRAINT uk_employees_phone    UNIQUE      (phone)
+                CONSTRAINT uk_employees_phone    UNIQUE      (phone),
+                CONSTRAINT fk_employees_department   FOREIGN KEY (department_id)  REFERENCES departments(id),
+                CONSTRAINT fk_employees_designation  FOREIGN KEY (designation_id) REFERENCES designations(id)
             );
             CREATE INDEX idx_employees_org_id       ON employees (org_id);
+            CREATE INDEX idx_employees_department_id  ON employees (department_id);
+            CREATE INDEX idx_employees_designation_id ON employees (designation_id);
             CREATE INDEX idx_employees_metadata_gin ON employees USING GIN (metadata jsonb_path_ops);
             ]]>
         </sql>
@@ -37,6 +41,8 @@
             <sql dbms="postgresql" splitStatements="true" stripComments="true">
                 <![CDATA[
                 DROP INDEX IF EXISTS idx_employees_metadata_gin;
+                DROP INDEX IF EXISTS idx_employees_designation_id;
+                DROP INDEX IF EXISTS idx_employees_department_id;
                 DROP INDEX IF EXISTS idx_employees_org_id;
                 DROP TABLE IF EXISTS employees;
                 ]]>

@@ -1,5 +1,5 @@
 databaseChangeLog:
-  # Create tables
+  # Create tables (employees table now includes UUID foreign keys from the start)
   - include:
       file: db/changelog/01-create-employees-table.xml
   - include:
@@ -12,7 +12,3 @@ databaseChangeLog:
       file: db/changelog/04-seed-departments.xml
   - include:
       file: db/changelog/05-seed-designations.xml
-  
-  # Migrate employees to use UUID foreign keys
-  - include:
-      file: db/changelog/06-employees-dept-desig-uuid-fk.xml
